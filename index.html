@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Js datatype learning app.</title>
+</head>
+<style>
+    div {
+        width: 40%;
+        margin: 3rem auto;
+        border: 1px solid red;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    div>button {
+        background-color: pink;
+        padding: 0.4rem;
+    }
+</style>
+
+<body>
+    <div>
+
+    </div>
+    <div></div>
+</body>
+<script>
+    let element = document.getElementsByTagName("div")[0]
+    let texts = document.getElementsByTagName("div")[1]
+    let dataTypes = ["Objects", "Arrays", "Functions", "Strings", "Numbers", "null", "undefined"]
+    var allBtns = []
+    dataTypes.map((i, idx) => {
+        let btn = document.createElement('button');
+        allBtns.push([btn, true])
+        btn.innerHTML = i;
+
+
+        element.append(btn)
+    })
+    // allBtns[0].addEventListener("click", funcObjects)
+    allBtns.map((_, idx) => {
+        allBtns[idx][0].addEventListener("click", () => funcObjects(idx, allBtns[idx][1]))
+    })
+    function funcObjects(idx, status) {
+        console.log("akash")
+
+        let ul = document.createElement('ul');
+        let arrObj = ["Object is a non primitive datatype", "Objects are mutable i.e we can change value", "All the keys of objects are always unique", "We can use for...in loop to iterate through object", "Objects.keys() returns all the keys"]
+        let arrArray = ["Arrays are used to store multiple values in a single variable", "We can use higher order functions for looping over the array", "Array is a non primitive datatype", "It can store different primitive datatypes(eg: string, number etc"]
+        if (idx === 0) {
+            arrObj.map((sent) => {
+                let li = document.createElement("li");
+                li.innerHTML = sent
+                ul.appendChild(li)
+            })
+            if (status) {
+                texts.appendChild(ul)
+                allBtns[idx][1] = false
+            }
+        }
+       else if (idx === 1) {
+            arrArray.map((sent) => {
+                let li = document.createElement("li");
+                li.innerHTML = sent
+                ul.appendChild(li)
+            })
+            if (status) {
+                texts.appendChild(ul)
+                allBtns[idx][1] = false
+            }
+        }
+
+
+    }
+</script>
+
+</html>
